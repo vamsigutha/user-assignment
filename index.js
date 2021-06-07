@@ -9,7 +9,7 @@ submit.addEventListener("click", () => {
 
 //get user details by id
 getUserDetails = async (userId) => {
-  let path = "http://jsonplaceholder.typicode.com/users/" + userId;
+  let path = "https://jsonplaceholder.typicode.com/users/" + userId;
   let userDetails = await axios.get(path).then((res) => {
     var result = res.data;
     console.log(result);
@@ -88,7 +88,7 @@ onClickShowCommentsButton = async (e) => {
 
 //get posts by user id
 fetchPostsByUser = async (userId) => {
-  let path = `http://jsonplaceholder.typicode.com/users/${userId}/posts`;
+  let path = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
   return await axios.get(path).then((res) => {
     console.log(res.data);
     return res.data;
@@ -97,7 +97,7 @@ fetchPostsByUser = async (userId) => {
 
 //get comments by post id
 getCommentsByPost = async (postId) => {
-  let path = `http://jsonplaceholder.typicode.com/posts/${postId}/comments`;
+  let path = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`;
   return await axios.get(path).then((res) => {
     console.log(res.data);
     return res.data;
@@ -106,7 +106,7 @@ getCommentsByPost = async (postId) => {
 
 //get location with lat and long coordinates
 getLocation = async (lat, long) => {
-  let path = `http://www.mapquestapi.com/geocoding/v1/reverse?key=${KEY}&location=${lat},${long}&includeRoadMetadata=true&includeNearestIntersection=true`;
+  let path = `https://www.mapquestapi.com/geocoding/v1/reverse?key=${KEY}&location=${lat},${long}&includeRoadMetadata=true&includeNearestIntersection=true`;
 
   var location = await axios.get(path).then((res) => {
     var result = res.data.results[0].locations[0];
