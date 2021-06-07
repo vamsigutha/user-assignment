@@ -4,6 +4,7 @@ var displayResult = document.querySelector(".displayResult");
 var KEY = "lXDGBrzVFU8EWxYtXNtYWCotQk1u7KFV";
 
 submit.addEventListener("click", () => {
+  displayResult.innerHTML = "Loading...";
   getUserDetails(userId.value);
 });
 
@@ -19,7 +20,7 @@ getUserDetails = async (userId) => {
     userDetails.address.geo.lat,
     userDetails.address.geo.lng
   );
-  displayResult.innerHTML = "";
+
   displayResult.innerHTML = `<p>User Name: ${userDetails.name}</p>
     <p>Email: ${userDetails.email}</p>
     <p>Address: ${userDetails.address.suite}, ${userDetails.address.street},${userDetails.address.city} - ${userDetails.address.zipcode}</p>
