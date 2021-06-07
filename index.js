@@ -2,8 +2,12 @@ var submit = document.getElementById("submit");
 var userId = document.getElementById("userId");
 var displayResult = document.querySelector(".displayResult");
 var KEY = "lXDGBrzVFU8EWxYtXNtYWCotQk1u7KFV";
+var postContainer = null;
 
 submit.addEventListener("click", () => {
+  if (postContainer != null) {
+    postContainer.innerHTML = "";
+  }
   displayResult.innerHTML = "Loading...";
   getUserDetails(userId.value);
 });
@@ -36,9 +40,9 @@ getUserDetails = async (userId) => {
 //to create posts
 onShowPostsButtonClick = async (userId) => {
   var posts = await fetchPostsByUser(userId);
-  var div = document.createElement("div");
+  postContainer = document.createElement("div");
   var body = document.getElementsByTagName("body")[0];
-  body.appendChild(div);
+  body.appendChild(postContainer);
   for (let i = 0; i < posts.length; i++) {
     var postDiv = document.createElement("div");
     var tag = document.createElement("p");
@@ -65,7 +69,7 @@ onShowPostsButtonClick = async (userId) => {
       await onClickShowCommentsButton(e);
     });
 
-    div.appendChild(postDiv);
+    postContainer.appendChild(postDiv);
   }
 };
 
